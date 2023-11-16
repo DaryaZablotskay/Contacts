@@ -1,0 +1,40 @@
+﻿@using Contacts.Dto
+@model IEnumerable<ContactsPage>
+
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile phone</th>
+            <th>Job title</th>
+            <th>Birthdate</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.Name</td>
+                <td>@contact.MobilePhone</td>
+                <td>@contact.JobTitle</td>
+                <td>@contact.BirthDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <button type="button" class="btn btn-light" onclick="showInPopup('@Url.ActionLink("Update", "Home",new {@mobilePhone = contact.MobilePhone}, Context.Request.Scheme)','Update')">Update</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-light" onclick="location.href = '@Url.ActionLink("Delete", "Home", new {@mobilePhone = contact.MobilePhone})'">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row" style="position: absolute; top: 500px; left:570px">
+    <button type="button" class="btn btn-light" onclick="showInPopup('@Url.ActionLink("Add", "Home",null, Context.Request.Scheme)','Add')">Add contact</button>
+</div>

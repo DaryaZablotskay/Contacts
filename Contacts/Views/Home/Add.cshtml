@@ -1,0 +1,35 @@
+﻿@using Contacts.Dto
+@model ContactsPage
+
+@{
+    ViewData["Title"] = "Add Contact";
+}
+
+<div>
+    <form asp-action="Add" onsubmit="return jQueryAjaxPost(this);" >
+        <div class="col">
+            <div class="col-md-8">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control">
+            </div>
+            <div class="col-md-8">
+                <label asp-for="MobilePhone" class="control-label"></label>
+                <input asp-for="MobilePhone" class="form-control">
+            </div>
+            <div class="col-md-8">
+                <label asp-for="JobTitle" class="control-label"></label>
+                <input asp-for="JobTitle" class="form-control">
+            </div>
+            <div class="col-md-8">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Add</button>
+        </div>
+    </form>
+</div>
+
+
